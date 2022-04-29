@@ -1,19 +1,26 @@
-class Credentials:
+from re import S
+import unittest
+from user import user
+import pyperclip
+
+class TestContact(unittest.TestCase):
     '''
-    class that generates new instances of user's credentials
+    Test class that defines test cases for the contact class behaviours.
+
+    Args:
+        unittest.TestCase: TestCase class that helps in creating test cases
     '''
-    
-    credentials_list = [] #empty credentials list
-    
-    def __init__(self,account,username,pass_word):
+    def setUp(self):
         '''
-        init method to define properties of our objects
-        Args:
-                account = new account
-                username = new username
-                pass_word = new password
+        Set up method to run before each test cases.
         '''
-        
-        self.account = account
-        self.username = username
-        self.pass_word = pass_word
+        self.new_contact = user("kelvin", "kiplangat", "0728335615", "kelvinkipla@gmail.com")
+
+    def test_init(self):
+        '''
+        test_init test case to test if the object is initialized properly
+        '''
+        self.assertEqual(self.new_contact.first_name, "kelvin") 
+        self.assertEqual(self.new_contact.last_name, "kiplangat")
+        self.assertEqual(self.new_contact.phone_number, "0728335615")
+        self.assertEqual(self.new_contact.email, "kelvinkipla@gmail.com")
