@@ -3,9 +3,9 @@ import unittest
 from user import User
 import pyperclip
 
-class TestContact(unittest.TestCase):
+class TestUser(unittest.TestCase):
     '''
-    Test class that defines test cases for the contact class behaviours.
+   
 
     Args:
         unittest.TestCase: TestCase class that helps in creating test cases
@@ -14,80 +14,78 @@ class TestContact(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_contact = User("kelvin", "kiplangat", "0728335615", "kelvinkipla@gmail.com")
+        self.new_user = User("kelvin", "kiplangat", "0728335615", "kelvinkipla@gmail.com")
 
     def test_init(self):
         '''
         test_init test case to test if the object is initialized properly
         '''
-        self.assertEqual(self.new_contact.first_name, "kelvin") 
-        self.assertEqual(self.new_contact.last_name, "kiplangat")
-        self.assertEqual(self.new_contact.phone_number, "0728335615")
-        self.assertEqual(self.new_contact.email, "kelvinkipla@gmail.com")
+        self.assertEqual(self.new_user.first_name, "kelvin") 
+        self.assertEqual(self.new_user.last_name, "kiplangat")
+        self.assertEqual(self.new_user.phone_number, "0728335615")
+        self.assertEqual(self.new_user.email, "kelvinkipla@gmail.com")
 
     def tearDown(self):
         '''
         tearDown method that does clean up after each test case has run.
         '''
-        User.contact_list = [] 
+        User.user_list = [] 
 
 
     def test_save_contact(self):
-        self.new_contact.save_contact()
-        self.assertEqual(len(User.contact_list), 1)
+        self.new_user.save_user()
+        self.assertEqual(len(User.user_list), 1)
 
     def test_save_multiple_contact(self):
-        self.new_contact.save_contact()
-        test_contact = User("Test", "User", "0728335615","test@user.com")
-        test_contact.save_contact()
-        self.assertEqual(len(User.contact_list), 2)
+        self.new_user.save_user()
+        test_user = User("Test", "User", "0728335615","test@user.com")
+        test_user.save_user()
+        self.assertEqual(len(User.user_list), 2)
     def test_delete_contact(self):
         '''
-        test_delete_contact to test if we can remove a contact from our contact list
+        test_delete_contact to test if we can remove a user from our user list
         '''
-        self.new_contact.save_contact()
-        test_contact = User("Test", "User", "0728335615","test@user.com")
-        test_contact.save_contact() 
+        self.new_user.save_user()
+        test_user = User("Test", "User", "0728335615","test@user.com")
+        test_user.save_contact() 
 
-        self.new_contact.delete_contact() 
-        self.assertEqual(len(User.contact_list), 1) 
+        self.new_user.delete_user() 
+        self.assertEqual(len(User.user_list), 1) 
 
-    def test_find_contact_by_number(self):
+    def test_find_user_by_number(self):
         '''
-        test to check if we can find a contact by phone number and display information
+        test to check if we can find a user by phone number and display information
         '''
-        self.new_contact.save_contact()
-        test_contact = User("Test", "User", "0712345678","test@user.com")
-        test_contact.save_contact()
+        self.new_user.save_user()
+        test_user = User("Test", "User", "0712345678","test@user.com")
+        test_user.save_user()
 
-        found_contact = User.find_by_number("0728335615") 
-        self.assertEqual(found_contact.email, test_contact.email)
+        found_user = User.find_by_user("0728335615") 
+        self.assertEqual(found_user.email, test_user.email)
 
-    def test_contact_exists(self):
+    def test_user_exists(self):
         '''
-        test to check if we can return a Boolean  if we cannot find the contact.
+        
         '''
-        self.new_contact.save_contact() 
-        test_contact = User("Test", "User", "0728335615","test@user.com") 
-        test_contact.save_contact()
+        self.new_user.save_user() 
+        test_user = User("Test", "User", "0728335615","test@user.com") 
+        test_user.save_user()
 
-        contact_exists = User.contact_exists("0728335615") 
-        self.assertTrue(contact_exists) 
+        user_exists = User.user_exists("0728335615") 
+        self.assertTrue(user_exists) 
 
-    def test_display_all_contacts(self):
+    def test_display_all_user(self):
         '''
-        method that returns a list of all contacts saved
+        
         '''
-        self.assertEqual(User.display_contacts(), User.contact_list) 
+        self.assertEqual(User.display_user(), User.user_list) 
 
 
     def test_copy_email(self):
-        '''
-        Test to confirm that we are copying the email address from a found contact
-        '''
-        self.new_contact.save_contact() 
-        User.copy_email("0711432765") 
-        self.assertEqual(self.new_contact.email, pyperclip.paste()) 
+    
+        self.new_user.save_user() 
+        User.copy_email("07283356145") 
+        self.assertEqual(self.new_user.email, pyperclip.paste()) 
 
 
 if __name__ == "__main__":

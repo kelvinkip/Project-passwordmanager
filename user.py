@@ -59,16 +59,16 @@ class User:
                 return True
         return False
     @classmethod
-    def display_contacts(cls):
+    def display_user(cls):
         '''
-        method that returns the contact list
+        method that returns the user list
         '''
-        return cls.contact_list
+        return cls.user_list
 
     @classmethod
     def copy_email(cls, number):
         '''
-        method that copies returned contact's email to clipboard
+        method that copies returned user's email to clipboard
         '''
         found_contact = User.find_by_number(number)
         pyperclip.copy(found_contact.email)
