@@ -1,7 +1,6 @@
 from os import access
-from urllib.parse import uses_netloc
 from user import User
-from credentials import TestUser
+# from credentials import Credentials
 import random
 
 def create_user(fullname,password):
@@ -29,6 +28,7 @@ def find_user(username):
     function that finds user by name and returns the user
     '''
     return User.find_by_user(username)
+
 def user_exists(username):
     '''
     function that checks if user exists and returns a boolean
@@ -36,7 +36,7 @@ def user_exists(username):
     return User.user_exists(username)
 
 #credentials 
-def create_credentials(account,username,pass_word):
+def create_Credentials(account,username,pass_word):
     '''
     function to create new credentials
     '''
@@ -60,6 +60,7 @@ def credential_exist(account):
     function that checks if  a credential exists by account and returns a boolean
     '''
     return User.find_credential_exist(account)
+
 def display_credentials():
     '''
     function that returns all saved credentials
