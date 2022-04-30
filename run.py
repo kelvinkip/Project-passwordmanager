@@ -1,4 +1,5 @@
 from os import access
+from urllib.parse import uses_netloc
 from user import User
 from credentials import TestUser
 import random
@@ -59,3 +60,8 @@ def credential_exist(account):
     function that checks if  a credential exists by account and returns a boolean
     '''
     return User.find_credential_exist(account)
+def display_credentials():
+    '''
+    function that returns all saved credentials
+    '''
+    return User.display_credentials()
