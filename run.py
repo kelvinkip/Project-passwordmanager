@@ -100,7 +100,7 @@ def main():
                 print("\n")
                 
                 for Credentials in display_credentials():
-                    print(f"{Credentials.account} \n {Credentials.password} \n {Credentials.username}")
+                    print(f"{Credentials.username} \n {Credentials.password} \n {Credentials.username}")
                     print("\n")
             else:
                 print("\n")
